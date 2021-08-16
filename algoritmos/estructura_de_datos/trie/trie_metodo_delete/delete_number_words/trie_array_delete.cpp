@@ -76,16 +76,16 @@ void isThereWord(string word) {
 }
 void deleteWord(string word){
     node *currentNode =  trie;
-    for (int i = 0; i< word.length(); i++) {
+    int i;
+    for (i = 0; i< word.length(); i++) {
         int character = word[i] - 'a';       // i = 0 'a'-'a' = 0
         if(currentNode->children[character] == NULL) {
-            if(word.length() != i){
             cout << "No se puede borrar " << "'" << word <<  "'" << " porque no existe en el trie"<< endl;
-            }
+            break;
         }
         currentNode = currentNode->children[character];
     }
-    if(currentNode->NumberOfWords > 0){
+    if(currentNode->NumberOfWords > 0 && word.length() == i){
         currentNode->NumberOfWords--;
         cout << "Se elimino una palabra " << "'" << word <<  "'" << " del trie" << endl;
     }else{
@@ -109,14 +109,13 @@ int main() {
     insertWord("bit");
     isThereWord("bit");
 
-
     deleteWord("auto");
     isThereWord("auto");
 
     deleteWord("segment");
     isThereWord("segment");
 
-    deleteWord("segment");
+    deleteWord("segmento");
     isThereWord("segment");
 
     return 0;
