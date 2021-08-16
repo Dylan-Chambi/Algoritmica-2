@@ -1,7 +1,7 @@
 # TRIE - Método 'delete' para varias palabras
 
 
-## Explicacion 🛠️
+## Explicacion del trie 🛠️
 
 Mi método funciona incorporando un contador de número de palabras para poder ver el número total de palabras y simplemente si disminuimos en 1 la cantidad de palabras SÓLO si el número de palabras es mayor a 0.
 
