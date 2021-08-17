@@ -2,39 +2,43 @@
 #define input freopen("in.txt", "r", stdin)
 #define output freopen("out.txt", "w", stdout)
 using namespace std;
-int reinas = 4;
+bool encontrado = false;
 // El algoritmo no esta terminado :(
 
-void backTracking(int posicion, int solucion[]){
+bool esValido(int posicion, int solucion[], int reinas){
+    for(int i = 0; i < posicion; i++){
+        if(solucion[i] == solucion[posicion] || abs(solucion[i] - solucion[posicion]) == abs(i - posicion)){
+            return false;
+        }
+    }
+    return true;
+}
+
+void backTracking(int posicion, int solucion[], int reinas){
+    if(posicion > 3 && !encontrado){
+        cout << "Termine" << endl;
+        for(int i = 0; i < reinas; i++){
+            cout << solucion[i] << endl;
+        }
+        encontrado = true;
+        return;
+    }
+
     for(int i = 0; i < reinas; i++){
         solucion[posicion] = i;
-        if(i == 0){
-            if(solucion[posicion] == 0 && solucion[posicion] == i){
-                return;
-            }
-        }else if(i == reinas-1){
-            if(solucion[posicion] == i && solucion[posicion] == i){
-                return;
-            }
-        }else{
-            if(solucion[posicion] == reinas-1 || solucion[posicion]-1 == i || solucion[posicion]+1 == i){
-                return;
-            }
+        if(esValido(posicion, solucion, reinas)){
+            backTracking(posicion+1, solucion, reinas);
         }
-        solucion[posicion] = i;
-        if(posicion = 3){
-            return;
-        }
-        return backTracking(posicion+1, solucion);
     }
+
+
 }
 
 
 int main(){
-    int arreglo[reinas];
-    backTracking(0, arreglo);
+    int numeroDeReinas;
+    cin >> numeroDeReinas;
+    int arreglo[numeroDeReinas];
+    backTracking(0, arreglo, numeroDeReinas);
 
-    for(int i = 0; i < reinas; i++){
-        cout << arreglo[i] << endl;
-    }
 }
