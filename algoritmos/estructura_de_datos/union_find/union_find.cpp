@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h> 
 #define input freopen("in.txt", "r", stdin)
 #define output freopen("out.txt", "w", stdout)
@@ -7,8 +6,7 @@ using namespace std;
 int parent[10000];
 int rango[10000];
 
-int n;
-void init() {
+void init(int n) {
     for(int i=0;  i<= n; i++) {
         parent[i] = i;
         rango[i] = 0;
@@ -39,11 +37,12 @@ void unionRango(int x,int y) {
 }
 
 int main() {
+    int n;
     cin>>n;
-    init();
-    int nrounionRangoes; 
-    cin>>nrounionRangoes;
-    while(nrounionRangoes--) {
+    init(n);
+    int nrounionRango; 
+    cin>>nrounionRango;
+    while(nrounionRango--) {
         int x,y;
         cin>>x>>y; 
         unionRango(x,y);
