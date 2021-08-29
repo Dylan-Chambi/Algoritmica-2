@@ -48,12 +48,12 @@ int maxFlow(int s,int t) {
 
 
 int main() {
-int nodes, nroCases = 1; 
-while(cin>>nodes && nodes) {
-    int s,t,vertices;
-    cin>>s>>t>>vertices;
+int vertices, nroCases = 1; 
+while(cin>>vertices && vertices) {
+    int s,t,aristas;
+    cin>>s>>t>>aristas;
     memset(grafo,0,sizeof(grafo));
-     for(int i=0;i<vertices;i++) {
+     for(int i=0;i<aristas;i++) {
         int from, to, capacity; 
         cin>>from>>to>>capacity;
         grafo[from][to] = capacity;
