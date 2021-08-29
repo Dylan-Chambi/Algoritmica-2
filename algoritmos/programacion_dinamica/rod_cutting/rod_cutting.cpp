@@ -5,8 +5,9 @@
 using namespace std;
 int length[] = {1,3,5,7}; // tamanio 4
 int precios[] = {2,15,20,50};  // 7 = 50  + 3 =15 = 65 5 = 60 47 20 
-
 int dp[100000];
+
+
 int solve_dp(int tamanioBarra) { // 10 dp[10] 10 -1 10- 3  10-5 10 -7 
     if(tamanioBarra == 0) {
         return 0;

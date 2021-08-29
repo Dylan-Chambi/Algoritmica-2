@@ -2,17 +2,17 @@
 #define input freopen("in.txt", "r", stdin)
 #define output freopen("out.txt", "w", stdout)
 using namespace std;
-
-int dp[20][2][20];
+int dp[20][2][20][20];
+string number;
 
 bool isPrime(int n){
-    if(n == 1 || n == 0) {
-        return false;
-    }
+    
     if(n == 2) {
         return true;
     } 
-    // i*i es mas lento que sqrt(n); 
+    if(n < 2 || n % 2 == 0) {
+        return false;
+    }
     for(int i = 3; i*i<=n; i+=2) {
         if( n%i == 0) {
             return false;
@@ -21,53 +21,52 @@ bool isPrime(int n){
     return true;
 }
 
-int solve_dp(string number, int pos, int mayor,int pares) {
+int solve_dp(int pos, int mayor,int sumaDigitos, int suma) {
     if(pos > number.size()) { // cuando la posicion exceda al numero dado
         return 0;
     }
     // Modificar de acuerdo al problema
     if(pos == number.size()) {
-        if(pares == 2) { // tiene 2 pares el numero 
+        // cout<<pares<<endl;
+        if(isPrime(sumaDigitos)) { // tiene 2 pares el numero 
             return 1;
         }
         else {
             return 0;
         }
     }
-
-    if(dp[pos][mayor][pares] == -1) { // Pregunto si no lo he calculado 
+    if(dp[pos][mayor][sumaDigitos][suma] == -1) { // Pregunto si no lo he calculado 
         int tope = 9;
         if(mayor == true) {  // el numero que voy a crear puede llegar a ser mayor
             tope = number[pos]-'0';  // solo podemos usar los numeros de 0 al tope -- '3'-'0' =  51 - 48 = 3 
         }
-        dp[pos][mayor][pares] = 0;
+        dp[pos][mayor][sumaDigitos][suma] = 0;
         for(int digito = 0; digito <= tope; digito++) {
-            int esPar = digito%2 == 0;
-            if(digito == tope) {
-                dp[pos][mayor][pares] += solve_dp(number, pos+1, true, pares + esPar);
+            if(digito == tope ) {
+                dp[pos][mayor][sumaDigitos][suma] += solve_dp(pos+1, true, suma+digito > 0? sumaDigitos+digito: 0, suma+digito);
             }
-            else { // 0 1 2 
-                dp[pos][mayor][pares] += solve_dp(number, pos+1, false, pares + esPar);
+            else {
+                dp[pos][mayor][sumaDigitos][suma] += solve_dp(pos+1, false, suma+digito > 0? sumaDigitos+digito: 0, suma+digito);
             }
         }
     }
-    return dp[pos][mayor][pares];
+    return dp[pos][mayor][sumaDigitos][suma];
 }
-
-
-
 int main(){
-
-    // hallar los numeros que tengan 2 pares en su interior del rango 20 hasta 30
-    string a = "10";
-    string b = "20";
+    int a, b;
+    cin >> a >> b;
     // calculando f(a)
+    number = to_string(a-1);
     memset(dp, -1, sizeof(dp));
-    int pares_hasta_a = solve_dp("9", 0, true, 0);
+    int pares_hasta_a = solve_dp(0, true, 0, 0);
     // calculando f(b)
     memset(dp, -1, sizeof(dp));
-    int pares_hasta_b = solve_dp(b, 0, true, 0);
+    number = to_string(b);
+    int pares_hasta_b = solve_dp(0, true, 0, 0);
     // total para f(a,b) = f(b) - f(a-1)
-    cout<< pares_hasta_b - pares_hasta_a;
+    cout<< pares_hasta_b-pares_hasta_a;
     return 0;
 }
+/*
+120 150
+*/

@@ -3,7 +3,7 @@
 #define output freopen("out.txt", "w", stdout)
 using namespace std;
 bool encontrado = false;
-// El algoritmo no esta terminado :(
+// El algoritmo terminado :)
 
 bool esValido(int posicion, int solucion[], int reinas)
 {
