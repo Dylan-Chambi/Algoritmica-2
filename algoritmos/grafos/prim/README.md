@@ -1,4 +1,4 @@
-# Kruskal - Teoria de Grafos
+# Prim - Teoria de Grafos
 
 ![](https://upload.wikimedia.org/wikipedia/commons/9/9b/PrimAlgDemo.gif)
 
