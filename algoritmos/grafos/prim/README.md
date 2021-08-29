@@ -10,7 +10,7 @@
 
 ## Tabla de Contenido
 
-- [Prim](https://github.com/Dylan-Chambi/Algoritmica-2/blob/main/algoritmos/estructura_de_datos/bit/bit.cpp)
+- [Prim](https://github.com/Dylan-Chambi/Algoritmica-2/blob/3b6efc3854dbecfc5fcbe070ef9496051b7bc0df/algoritmos/grafos/prim/prim.cpp)
 
 
 # Explicacion de la Implementacion
