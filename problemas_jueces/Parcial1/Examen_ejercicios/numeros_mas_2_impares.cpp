@@ -14,7 +14,6 @@ long long solve_dp(int pos, int mayor,int impares, int suma) {
     }
     // Modificar de acuerdo al problema
     if(pos == number.size()) {
-        cout<<impares<<endl;
         if(impares >= 2) { 
             return 1;
         }
