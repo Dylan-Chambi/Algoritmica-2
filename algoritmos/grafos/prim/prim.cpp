@@ -43,7 +43,7 @@ int main()
         grafo[ini].push_back(make_pair(peso,fin));
         grafo[fin].push_back(make_pair(peso,ini));
     }
-    cout <<  Prim(1) << endl;
+    cout <<  Prim(0) << endl;
     return 0;
 }
 /*
@@ -69,15 +69,17 @@ Input:
 Output:
 39
 */
-
 /*
-12 16
+Ejercicio del Repaso:
+
+12 17
+0 1 0
 1 3 15
-2 3 7
+2 3 8
 12 10 14
 8 3 9
 8 2 10
-3 2 8
+3 12 7
 2 1 27
 10 4 13
 1 4 17
