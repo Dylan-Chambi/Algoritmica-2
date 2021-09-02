@@ -43,7 +43,7 @@ int main()
         grafo[ini].push_back(make_pair(peso,fin));
         grafo[fin].push_back(make_pair(peso,ini));
     }
-    cout <<  Prim(0) << endl;
+    cout <<  Prim(1) << endl;
     return 0;
 }
 /*
@@ -68,4 +68,24 @@ Input:
 
 Output:
 39
+*/
+
+/*
+12 16
+1 3 15
+2 3 7
+12 10 14
+8 3 9
+8 2 10
+3 2 8
+2 1 27
+10 4 13
+1 4 17
+1 5 20
+4 5 20
+4 9 23
+5 9 18
+2 7 21
+7 11 30
+5 11 25
 */
